@@ -1,0 +1,98 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <script src="https://js.stripe.com/v3/"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'shop/css/style2.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'shop/css/cartt.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+    <style>{% block css %}{% endblock %}</style>
+    <script type="text/javascript">
+    var user = "{{request.user}}"
+
+    function getToken(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++)
+                var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURLComponent(cookie.substring(name.length + 1));
+                break;
+            }
+
+        }
+    }
+    return cookieValue
+    var csrftoken = getToken('csrftoken');
+    </script>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 fixed-top">
+        <div class="container-fluid font">
+            <a class="navbar-brand" href="{% url 'index' %}">E-Com</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item mx-center">
+                        <a class="nav-link active mr-3" aria-current="page" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'logoutas' %}">Logout</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'tracker' %}">Tracker</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'loginas' %}">Login</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'tracker' %}">Tracker</a>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                        {% endif %}
+                </ul>
+                <!--  <form class="d-flex mr-3" >
+        <input class="form-control me-2 mr-2"  type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+                <a href="{% url 'cart' %}">
+                    <img id="cart-icon" src="{% static 'shop/images/cart.png' %}">
+                </a>
+                <p id="cart-total">{{cartItems}}</p>
+            </div>
+        </div>
+    </nav>
+</header>
+{% block body %}{% endblock %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>
+{% block js %}
+    <script type="text/javascript" src="{% static 'shop/js/crt.js' %}"></script>
+ {% endblock %}
+</script>
+</body>
+
+</html>

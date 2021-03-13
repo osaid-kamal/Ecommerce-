@@ -1,0 +1,61 @@
+.col-md-3
+            {
+            display: inline-block;
+            margin-left:-4px;
+            }
+
+            .carousel-indicators .active {
+            background-color: blue;
+              }
+
+           
+            body .carousel-indicator li{
+            background-color: grey;
+            }
+
+            body .carousel-indicators{
+            bottom: 0;
+            } 
+
+            body .carousel-control-prev-icon,
+            body .carousel-control-next-icon{
+            background-color:red;
+            width:20px;
+            height:40px;
+            }
+
+            .carousel-control-prev,
+            .carousel-control-next{
+            padding-top:187px;
+            top: auto;
+            bottom: auto;
+            }
+             body .no-padding{
+             padding-left: 0,
+             padding-right: 0;
+             }
+          .H1
+          {
+              font-size:30px;
+                text-align:center;
+                <!-- font-family: 'Fredoka One', cursive; -->
+             
+              
+
+          }
+          .container
+          {
+            padding:-20px!important;
+            width:100%!important;
+          }
+          .my-3
+          {
+            margin-top:-1rem!important;
+          }
+         
+         .btn-danger
+         {
+           border: 5px!important;
+           font-size:10px!important;
+         }
+         body { padding-top: 70px; }
